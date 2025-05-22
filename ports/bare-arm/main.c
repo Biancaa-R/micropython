@@ -27,7 +27,7 @@
 #include <string.h>
 #include "py/compile.h"
 #include "py/runtime.h"
-
+extern void uart_init(void); // declare from mphalport.c
 static const char *demo_single_input =
     "print('hello world!', list(x + 1 for x in range(10)), end='eol\\n')";
 
@@ -58,6 +58,7 @@ static void do_str(const char *src, mp_parse_input_kind_t input_kind) {
 // Main entry point: initialise the runtime and execute demo strings.
 void bare_main(void) {
     mp_init();
+    uart_init();
     do_str(demo_single_input, MP_PARSE_SINGLE_INPUT);
     do_str(demo_file_input, MP_PARSE_FILE_INPUT);
     mp_deinit();
