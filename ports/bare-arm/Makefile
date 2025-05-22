@@ -32,6 +32,13 @@ LDFLAGS += -nostdlib -T stm32f405.ld --gc-sections
 # Define the required source files.
 SRC_C += lib.c main.c system.c
 
+CFLAGS += -Ihal/Inc
+SRC_C += hal/Src/stm32f4xx_hal.c \
+         hal/Src/stm32f4xx_hal_uart.c \
+         hal/Src/stm32f4xx_hal_gpio.c \
+         hal/Src/stm32f4xx_hal_rcc.c \
+
+
 # Define the required object files.
 OBJ += $(PY_CORE_O)
 OBJ += $(addprefix $(BUILD)/, $(SRC_C:.c=.o))
