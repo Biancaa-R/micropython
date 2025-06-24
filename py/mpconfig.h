@@ -406,6 +406,11 @@
 #define MICROPY_EMIT_INLINE_XTENSA (0)
 #endif
 
+// Whether to support uncommon Xtensa inline assembler opcodes
+#ifndef MICROPY_EMIT_INLINE_XTENSA_UNCOMMON_OPCODES
+#define MICROPY_EMIT_INLINE_XTENSA_UNCOMMON_OPCODES (0)
+#endif
+
 // Whether to emit Xtensa-Windowed native code
 #ifndef MICROPY_EMIT_XTENSAWIN
 #define MICROPY_EMIT_XTENSAWIN (0)
@@ -1316,6 +1321,11 @@ typedef double mp_float_t;
 // Whether to set __file__ for imported modules
 #ifndef MICROPY_PY___FILE__
 #define MICROPY_PY___FILE__ (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_CORE_FEATURES)
+#endif
+
+// Whether to process __all__ when importing all public symbols from module
+#ifndef MICROPY_MODULE___ALL__
+#define MICROPY_MODULE___ALL__ (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_BASIC_FEATURES)
 #endif
 
 // Whether to provide mem-info related functions in micropython module
